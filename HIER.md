@@ -1,7 +1,8 @@
 # Directory structure
 
 ```
-┌── app               # Exposure of application to web, via Rails
+.
+├── app               # Exposure of application to web, via Rails
 │   ├── controllers
 │   └── views
 └── lib
