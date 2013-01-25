@@ -1,3 +1,3 @@
 Pheidippides::Application.routes.draw do
-  post 'sendgrid' => 'sendgrid/webhook'
+  post 'sendgrid' => 'sendgrid#webhook'
 end
