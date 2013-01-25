@@ -5,6 +5,6 @@ class CreateEmails < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :subscriptions, :address
+    add_index :emails, :address
   end
 end
