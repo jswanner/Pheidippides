@@ -2,7 +2,7 @@ class SendgridController < ApplicationController
   def webhook
     envelope = JSON.parse(params[:envelope])
     to = envelope['to']
-    list = List.find_by_address to
+    list = List.find_by_address! to
     mail_params = {
       from: params[:from],
       html: params[:html],
