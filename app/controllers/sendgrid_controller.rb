@@ -17,7 +17,7 @@ class SendgridController < ApplicationController
     }
     list.subscriptions.find_each do |subscription|
       RelayMailer.relay(
-        mail_params(to: subscription.email.address),
+        mail_params.merge(to: subscription.email.address),
         mail_headers
       ).deliver
     end
