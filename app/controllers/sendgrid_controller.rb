@@ -21,6 +21,8 @@ class SendgridController < ApplicationController
         mail_headers
       ).deliver
     end
+  rescue => e
+    notify_honeybadger e
   ensure
     head :ok and return
   end
