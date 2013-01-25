@@ -7,17 +7,18 @@ class SendgridController < ApplicationController
       from: params[:from],
       html: params[:html],
       subject: params[:subject],
-      text: params[:text],
-      to: list.address
+      text: params[:text]
     }
     mail_headers = {
+      'Precedence' => 'list',
       'Reply-To' => list.address,
+      'To' => list.address,
       'X-Original-Sender' => envelope['from']
     }
     list.subscriptions.find_each do |subscription|
       RelayMailer.relay(
-        mail_params,
-        mail_headers.merge('Delivered-To' => subscription.email.address)
+        mail_params(to: subscription.email.address),
+        mail_headers
       ).deliver
     end
   ensure
