@@ -6,7 +6,7 @@ class RelayMailer < ActionMailer::Base
     headers mail_headers
 
     mail mail_params do |format|
-      format.html { render html: html }
+      format.html { render text: html }
       format.text { render text: text }
     end
   end
